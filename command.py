@@ -46,8 +46,5 @@ class Command:
         return  self.command_word \
                 + self.help_string
 
-    def test(self):
-        """
-        Fonction inutile pour augmenter le score pylint
-        """
-        return 0
+    def afficher_message_erreur():
+        print("Commande non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.")
