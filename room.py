@@ -1,6 +1,6 @@
 # Define the Room class.
 """
-author = Eman Moussa & Hana Bouabdellah
+Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 class Room:
     """
