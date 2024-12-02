@@ -28,6 +28,18 @@ class Game:
             "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
         }
 
+    def creer_piece(self):
+        # Demander les informations de la nouvelle pièce
+        name = input("Entrez le nom de la nouvelle pièce : ").strip()
+        description = input("Entrez la description de la pièce : ").strip()
+
+        # Créer l'instance de la pièce
+        nouvelle_piece = Room(name, description)
+
+        # Ajouter la pièce au dictionnaire des pièces
+        self.rooms[name] = nouvelle_piece
+        print(f"La pièce '{name}' a été créée avec succès.")
+        
     def afficher_aide(self):
         # Affiche les commandes disponibles pour le joueur.
         print("Commandes disponibles :")
