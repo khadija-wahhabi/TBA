@@ -44,3 +44,38 @@ class Room:
         # - direction : La direction de la sortie.
         # - room : La pièce cible.
         self.exits[direction] = room
+
+    def obtenir_sortie(self, direction):
+        # Renvoie la destination correspondant à une direction donnée.
+        # - direction : La direction demandée.
+        return self.exits.get(direction)
+
+    def afficher_description(self):
+        # Affiche la description de la pièce et ses éléments interactifs.
+        print(f"Vous êtes dans {self.name}.")
+        print(self.description)
+
+        if self.inventory:
+            print("Vous voyez ici :")
+            for objet in self.inventory.keys():
+                print(f"- {objet}")
+
+        if self.indice:
+            print("Il y a quelque chose d'intéressant ici... Peut-être un indice.")
+
+        if self.pnj:
+            print("Vous remarquez quelqu'un dans la pièce :")
+            for nom_pnj in self.pnj.keys():
+                print(f"- {nom_pnj}")
+
+    def ajouter_objet(self, objet, description):
+        # Ajoute un objet à l'inventaire de la pièce.
+        # - objet : Nom de l'objet.
+        # - description : Description de l'objet.
+        self.inventory[objet] = description
+
+    def retirer_objet(self, objet):
+        # Retire un objet de l'inventaire de la pièce.
+        # - objet : Nom de l'objet à retirer.
+        if objet in self.inventory:
+            del self.inventory[objet]
