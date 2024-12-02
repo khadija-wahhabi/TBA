@@ -23,4 +23,3 @@ if __name__ == "__main__":
 # Démarrage du jeu
 if __name__ == "__main__":
     jeu()
-
