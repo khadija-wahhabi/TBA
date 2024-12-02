@@ -7,10 +7,6 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 from game import Game
 
 def main():
-    """
-    Fonction principale pour démarrer le jeu.
-    Initialise et lance une instance de Game.
-    """
     print("=== Bienvenue dans notre jeu texte ! ===")
     print("Vous vous réveillez dans la maison de vos grands-parents, sans souvenirs de votre passé.")
     print("Votre mission : explorer la maison, résoudre des énigmes, et retrouver votre mémoire.")
