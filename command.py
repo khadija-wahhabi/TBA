@@ -14,7 +14,7 @@ class Command:
 
     def __str__(self):
         # Retourne une représentation lisible de la commande
-        return f"{self.command_word} - {self.help_string}"
+        return f"{self.command_word}: {self.help_string}"
 
     def afficher_message_erreur():
         # Méthode statique pour afficher un message d'erreur générique
