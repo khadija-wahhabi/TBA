@@ -1,59 +1,28 @@
 """
 Fichier : main.py
-Point d'entrée du jeu. Contient la boucle principale et les interactions avec le joueur.
+Point d'entrée principal du jeu.
 Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 
-from command import Command
-from room import Room
+from game import Game
 
-# Fonction pour déplacer le joueur d'une pièce à une autre
-def deplacer(joueur_position, direction):
-    # Gère les déplacements entre les pièces en fonction des directions données par le joueur.
-    if direction not in Room.zones[joueur_position]:
-        Command.afficher_message_erreur()  # Utilise la méthode statique de la classe Command
-        return joueur_position
-
-    prochaine_zone = Room.zones[joueur_position][direction]
-
-    # Gérer le passage interdit
-    if prochaine_zone in Room.zones_interdites:
-        print(f"Le passage vers {prochaine_zone} est bloqué. Résolvez une énigme pour y accéder.")
-        return joueur_position
-
-    # Gérer les sens uniques
-    if direction in Room.sens_unique.get(joueur_position, {}) and not Room.sens_unique[joueur_position][direction]:
-        print("Vous ne pouvez pas aller dans cette direction.")
-        return joueur_position
-
-    # Si le déplacement est valide
-    if prochaine_zone:
-        print(f"Vous avancez vers {prochaine_zone}.")
-        return prochaine_zone
-    else:
-        Command.afficher_message_erreur()
-        return joueur_position
-
-# Boucle principale du jeu
-def jeu():
+def main():
     """
-    Initialise et lance la boucle principale du jeu.
+    Fonction principale pour démarrer le jeu.
+    Initialise et lance une instance de Game.
     """
-    print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
-    joueur_position = "entrée"  # Position initiale du joueur
+    print("=== Bienvenue dans notre jeu texte ! ===")
+    print("Vous vous réveillez dans la maison de vos grands-parents, sans souvenirs de votre passé.")
+    print("Votre mission : explorer la maison, résoudre des énigmes, et retrouver votre mémoire.")
+    print("Tapez 'help' à tout moment pour afficher les commandes disponibles.")
+    
+    # Créer une instance de Game et démarrer le jeu
+    game = Game()
+    game.jouer()
 
-    while True:
-        commande = input(">>> ").strip().lower()  # Normalise l'entrée utilisateur
+if __name__ == "__main__":
+    main()
 
-        if commande == "help":
-            print("Commandes disponibles : nord, est, sud, ouest, quitter")
-        elif commande == "quitter":
-            print("Merci d'avoir joué ! À bientôt.")
-            break
-        elif commande == "":
-            Command.afficher_message_erreur()
-        else:
-            joueur_position = deplacer(joueur_position, commande)
 
 # Démarrage du jeu
 if __name__ == "__main__":
