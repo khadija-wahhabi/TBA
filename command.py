@@ -17,6 +17,7 @@ class Command:
 
     def afficher_message_erreur():
         print("Commande non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.")
+
     def executer(self, *params):
     if len(params) != self.number_of_parameters:
         print("Nombre incorrect de paramètres pour cette commande.")
