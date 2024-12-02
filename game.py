@@ -54,21 +54,21 @@ class Game:
     def deplacer(self, direction=None):
     # Gère le déplacement du joueur en fonction de la direction donnée.
     # - direction : Direction souhaitée (nord, sud, est, ouest).
-    if direction is None:
+        if direction is None:
         # Si aucune direction n'est passée, demander à l'utilisateur
-        direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
+            direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
 
-    lieu_actuel = self.player.position
-    directions_possibles = Room.zones.get(lieu_actuel, {})
+        lieu_actuel = self.player.position
+        directions_possibles = Room.zones.get(lieu_actuel, {})
 
-    if direction in directions_possibles and directions_possibles[direction]:
+        if direction in directions_possibles and directions_possibles[direction]:
         # Si la direction est valide et mène à un lieu existant
-        prochaine_zone = directions_possibles[direction]
-        self.player.changer_position(prochaine_zone)
-        print(f"Vous êtes maintenant dans {self.player.position}.")
-    else:
+            prochaine_zone = directions_possibles[direction]
+            self.player.changer_position(prochaine_zone)
+            print(f"Vous êtes maintenant dans {self.player.position}.")
+        else:
         # Si la direction est invalide ou non disponible
-        print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
+            print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
 
     def jouer(self):
         # Démarre la boucle principale du jeu.
