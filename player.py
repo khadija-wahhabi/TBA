@@ -9,11 +9,12 @@ class Player:
         # Initialisation du joueur.
         self.position = start_position  # Position actuelle
         self.inventory = []  # Inventaire du joueur
-        self.history = []  # Historique des positions
-
+        self.historique = [start_position]  # Historique des déplacements
+        
     def changer_position(self, nouvelle_position):
         # Change la position actuelle du joueur.
         self.position = nouvelle_position
+        self.historique.append(nouvelle_position)  # Enregistre la nouvelle position dans l'historique
 
     def ajouter_objet(self, objet):
         # Ajoute un objet à l'inventaire du joueur.
