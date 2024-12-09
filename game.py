@@ -27,6 +27,7 @@ class Game:
             "help": Command("help", "Afficher l'aide.", self.afficher_aide, 0),
             "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
             "ajouter": Command("ajouter", "Ajouter une nouvelle pièce.", self.creer_piece, 0),
+            "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
         }
 
     def creer_piece(self):
