@@ -84,13 +84,12 @@ class Game:
                 Command.afficher_message_erreur()
 
     def afficher_historique(self):
-        # Affiche l'historique des déplacements du joueur.
+    if self.player.historique:
         print("Historique des déplacements :")
-        if self.player.history:
-            for step in self.player.history:
-                print(f"- {step}")
-        else:
-            print("Aucun déplacement enregistré.")
+        for index, lieu in enumerate(self.player.historique, start=1):
+            print(f"{index}. {lieu}")
+    else:
+        print("Aucun déplacement enregistré.")
 
     def revenir_en_arriere(self):
         # Permet au joueur de revenir à sa position précédente.
