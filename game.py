@@ -85,8 +85,8 @@ class Game:
         directions_possibles = Room.zones.get(lieu_actuel, {})
 
         if direction in directions_possibles and directions_possibles[direction]:
-        # Si la direction est valide et mène à un lieu existant
             prochaine_zone = directions_possibles[direction]
+            self.player.historique.append(self.player.position)
             self.player.changer_position(prochaine_zone)
             print(f"Vous êtes maintenant dans {self.player.position}.")
         else:
@@ -113,12 +113,14 @@ class Game:
             print("Aucun déplacement enregistré.")
 
     def revenir_en_arriere(self):
-    # Vérifie si l'historique contient au moins une position précédente
-        if self.player.historique:
-            # Supprime et récupère la dernière position de l'historique
-            derniere_position = self.player.historique.pop()
+    # Vérifier si l'historique contient des déplacements
+        if len(self.player.historique) > 1:
+            # Retirer la position actuelle de l'historique, et récupérer la précédente
+            self.player.historique.pop()  # Supprime la dernière pièce (actuelle)
+            derniere_position = self.player.historique[-1]  # La dernière pièce dans l'historique
             self.player.changer_position(derniere_position)
             print(f"Vous êtes revenu(e) à {self.player.position}.")
         else:
             print("Aucun déplacement précédent disponible.")
+
 
