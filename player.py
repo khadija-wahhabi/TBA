@@ -9,6 +9,7 @@ class Player:
         # Initialisation du joueur.
         self.position = start_position  # Position actuelle
         self.inventory = []  # Inventaire du joueur
+        self.history = []  # Historique des positions
 
     def changer_position(self, nouvelle_position):
         # Change la position actuelle du joueur.
