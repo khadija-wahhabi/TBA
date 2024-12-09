@@ -29,15 +29,15 @@ class Game:
         }
 
     def creer_piece(self):
-        # Demander les informations de la nouvelle pièce
-        name = input("Entrez le nom de la nouvelle pièce : ").strip()
+        # Permet au joueur de créer une nouvelle pièce.
+        name = input("Entrez le nom de la nouvelle pièce : ").strip().lower()
         description = input("Entrez la description de la pièce : ").strip()
+        
+        if name in self.rooms:
+            print(f"La pièce '{name}' existe déjà.")
+            return
 
-        # Créer l'instance de la pièce
-        nouvelle_piece = Room(name, description)
-
-        # Ajouter la pièce au dictionnaire des pièces
-        self.rooms[name] = nouvelle_piece
+        self.rooms[name] = {"nord": None, "est": None, "sud": None, "ouest": None}
         print(f"La pièce '{name}' a été créée avec succès.")
         
     def afficher_aide(self):
@@ -80,3 +80,21 @@ class Game:
                 self.commands[commande].action()
             else:
                 Command.afficher_message_erreur()
+
+    def afficher_historique(self):
+        # Affiche l'historique des déplacements du joueur.
+        print("Historique des déplacements :")
+        if self.player.history:
+            for step in self.player.history:
+                print(f"- {step}")
+        else:
+            print("Aucun déplacement enregistré.")
+
+    def revenir_en_arriere(self):
+        # Permet au joueur de revenir à sa position précédente.
+        if self.player.history:
+            last_position = self.player.history.pop()
+            self.player.changer_position(last_position)
+            print(f"Vous êtes revenu à {self.player.position}.")
+        else:
+            print("Aucun historique disponible pour revenir en arrière.")
