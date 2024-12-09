@@ -14,6 +14,7 @@ class Game:
         # Initialise le jeu :
         # - Création du joueur.
         # - Chargement des commandes.
+        self.rooms = {}  # Dictionnaire pour stocker les pièces
         self.player = Player("entrée")  # Position initiale
         self.commands = self.initialiser_commandes()  # Commandes disponibles
 
