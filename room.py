@@ -8,7 +8,7 @@ class Room:
 
     # Dictionnaire des zones et leurs sorties
     zones = {
-        "entrée": {"nord": "salon", "est": None, "sud": None, "ouest": None},
+        "entrée": {"nord": "salon", "est": "cuisine", "sud": None, "ouest": None},
         "salon": {"nord": "chambre", "est": "cuisine", "sud": "entrée", "ouest": None},
         "cuisine": {"nord": None, "est": "jardin", "sud": None, "ouest": "salon"},
         "chambre": {"nord": "bureau", "est": None, "sud": "salon", "ouest": "grenier"},
