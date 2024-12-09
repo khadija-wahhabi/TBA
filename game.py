@@ -92,9 +92,25 @@ class Game:
                 self.player.historique.append(self.player.position)
             self.player.changer_position(prochaine_zone)
             print(f"Vous êtes maintenant dans {self.player.position}.")
+         
+            # Vérification des zones interdites
+            if prochaine_zone in Room.zones_interdites:
+                print(f"Cette zone ({prochaine_zone}) est interdite d'accès.")
+                return
+
+            # Vérification du sens unique
+            if lieu_actuel in Room.sens_unique:
+                if direction in Room.sens_unique[lieu_actuel]:
+                    print(f"Le sens vers {prochaine_zone} est bloqué (sens unique).")
+                    return
+
+            # Changer la position du joueur
+            self.player.changer_position(prochaine_zone)
+            self.history.append(lieu_actuel)
+            print(f"Vous êtes maintenant dans {self.player.position}.")
         else:
             print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
-    
+            
     def jouer(self):
         # Démarre la boucle principale du jeu.
         print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
