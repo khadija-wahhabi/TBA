@@ -75,10 +75,10 @@ class Game:
         exit()
 
     def deplacer(self, direction=None):
-    # Gère le déplacement du joueur en fonction de la direction donnée.
-    # - direction : Direction souhaitée (nord, sud, est, ouest).
+        # Gère le déplacement du joueur en fonction de la direction donnée.
+        # - direction : Direction souhaitée (nord, sud, est, ou ouest)
         if direction is None:
-        # Si aucune direction n'est passée, demander à l'utilisateur
+            # Si aucune direction n'est passée, demander à l'utilisateur
             direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
 
         lieu_actuel = self.player.position
@@ -86,13 +86,7 @@ class Game:
 
         if direction in directions_possibles and directions_possibles[direction]:
             prochaine_zone = directions_possibles[direction]
-            # Vérifier si la dernière pièce de l'historique est différente de la nouvelle position
-            if not self.player.historique or self.player.historique[-1] != self.player.position:
-                # Sauvegarder la position actuelle avant de changer si ce n'est pas un doublon
-                self.player.historique.append(self.player.position)
-            self.player.changer_position(prochaine_zone)
-            print(f"Vous êtes maintenant dans {self.player.position}.")
-         
+
             # Vérification des zones interdites
             if prochaine_zone in Room.zones_interdites:
                 print(f"Cette zone ({prochaine_zone}) est interdite d'accès.")
@@ -104,12 +98,16 @@ class Game:
                     print(f"Le sens vers {prochaine_zone} est bloqué (sens unique).")
                     return
 
+            # Ajouter à l'historique si ce n'est pas un doublon
+            if not self.player.historique or self.player.historique[-1] != self.player.position:
+                self.player.historique.append(self.player.position)
+
             # Changer la position du joueur
             self.player.changer_position(prochaine_zone)
-            self.history.append(lieu_actuel)
             print(f"Vous êtes maintenant dans {self.player.position}.")
         else:
             print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
+
             
     def jouer(self):
         # Démarre la boucle principale du jeu.
