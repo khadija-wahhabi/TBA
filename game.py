@@ -40,9 +40,28 @@ class Game:
             print(f"La pièce '{name}' existe déjà.")
             return
 
-        self.rooms[name] = {"nord": None, "est": None, "sud": None, "ouest": None}
-        print(f"La pièce '{name}' a été créée avec succès.")
-        
+        # Ajouter la nouvelle pièce
+        self.rooms[name] = {"description": description, "exits": {}}
+
+        # Demander à l'utilisateur s'il veut connecter cette pièce à d'autres
+        while True:
+            connecter = input("Voulez-vous connecter cette pièce à une autre ? (oui/non) : ").strip().lower()
+            if connecter == "oui":
+                direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
+                destination = input("Entrez le nom de la pièce à laquelle se connecter : ").strip()
+
+                if destination in self.rooms:
+                    self.rooms[name]["exits"][direction] = destination
+                    print(f"La pièce '{name}' est maintenant connectée à '{destination}' vers {direction}.")
+                else:
+                    print(f"La pièce '{destination}' n'existe pas.")
+            elif connecter == "non":
+                break
+            else:
+                print("Réponse non reconnue, réessayez.")
+
+        print(f"La pièce '{name}' a été ajoutée avec succès.")
+    
     def afficher_aide(self):
         # Affiche les commandes disponibles pour le joueur.
         print("Commandes disponibles :")
