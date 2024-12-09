@@ -29,6 +29,7 @@ class Game:
             "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
             "ajouter": Command("ajouter", "Ajouter une nouvelle pièce.", self.creer_piece, 0),
             "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
+            "retour": Command("retour", "Revenir à la position précédente.", self.revenir_en_arriere, 0),
         }
 
     def creer_piece(self):
@@ -112,10 +113,12 @@ class Game:
             print("Aucun déplacement enregistré.")
 
     def revenir_en_arriere(self):
-        # Permet au joueur de revenir à sa position précédente.
-        if self.player.history:
-            last_position = self.player.history.pop()
-            self.player.changer_position(last_position)
-            print(f"Vous êtes revenu à {self.player.position}.")
+    # Vérifie si l'historique contient au moins une position précédente
+        if self.player.historique:
+            # Supprime et récupère la dernière position de l'historique
+            derniere_position = self.player.historique.pop()
+            self.player.changer_position(derniere_position)
+            print(f"Vous êtes revenu(e) à {self.player.position}.")
         else:
-            print("Aucun historique disponible pour revenir en arrière.")
+            print("Aucun déplacement précédent disponible.")
+
