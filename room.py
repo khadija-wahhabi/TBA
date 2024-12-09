@@ -10,11 +10,11 @@ class Room:
     zones = {
         "entrée": {"nord": "salon", "est": None, "sud": None, "ouest": None},
         "salon": {"nord": "chambre", "est": "cuisine", "sud": "entrée", "ouest": None},
-        "cuisine": {"nord": "jardin", "est": "bureau", "sud": None, "ouest": "salon"},
-        "chambre": {"nord": None, "est": None, "sud": "salon", "ouest": "grenier"},
+        "cuisine": {"nord": None, "est": "jardin", "sud": None, "ouest": "salon"},
+        "chambre": {"nord": "bureau", "est": None, "sud": "salon", "ouest": "grenier"},
         "grenier": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
-        "jardin": {"nord": None, "est": None, "sud": "cuisine", "ouest": None},
-        "bureau": {"nord": None, "est": None, "sud": None, "ouest": "cuisine"},
+        "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine"},
+        "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None},
     }
 
     # Zones interdites
