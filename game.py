@@ -86,13 +86,15 @@ class Game:
 
         if direction in directions_possibles and directions_possibles[direction]:
             prochaine_zone = directions_possibles[direction]
-            self.player.historique.append(self.player.position)
+            # Vérifier si la dernière pièce de l'historique est différente de la nouvelle position
+            if not self.player.historique or self.player.historique[-1] != self.player.position:
+                # Sauvegarder la position actuelle avant de changer si ce n'est pas un doublon
+                self.player.historique.append(self.player.position)
             self.player.changer_position(prochaine_zone)
             print(f"Vous êtes maintenant dans {self.player.position}.")
         else:
-        # Si la direction est invalide ou non disponible
             print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
-
+    
     def jouer(self):
         # Démarre la boucle principale du jeu.
         print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
