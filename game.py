@@ -26,6 +26,7 @@ class Game:
             "ouest": Command("ouest", "Aller vers l'ouest.", self.deplacer, 0),
             "help": Command("help", "Afficher l'aide.", self.afficher_aide, 0),
             "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
+            "ajouter": Command("ajouter", "Ajouter une nouvelle pièce.", self.creer_piece, 0),
         }
 
     def creer_piece(self):
