@@ -7,7 +7,8 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 class Player:
     def __init__(self, start_position):
         # Initialisation du joueur.
-        self.position = start_position  # Position actuelle
+        self.name = name
+        self.position = "chambre"  # Position initialle
         self.inventory = []  # Inventaire du joueur
         self.historique = [start_position]  # Historique des déplacements
         
