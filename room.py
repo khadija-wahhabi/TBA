@@ -17,9 +17,9 @@ class Room:
         "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None},
     }
     descriptions = {
-        "entrée": "",
-        "salon": "",
-        "cuisine: "",
+        "entrée": " l ",
+        "salon": " l",
+        "cuisine":  " l",
         "chambre": "Vous êtes dans la chambre où vous vous êtes réveillé. Tout semble familier, mais un vide persiste en vous.",
         "grenier": "Un long couloir sombre avec des cadres de photos suspendus aux murs.",
         "jardin": "Vous êtes dans une bibliothèque ancienne. Les étagères sont remplies de livres poussiéreux et un journal attire votre attention.",
