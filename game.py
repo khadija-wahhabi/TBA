@@ -12,11 +12,16 @@ class Game:
     
     def __init__(self):
         # Initialise le jeu :
-        # - Création du joueur.
-        # - Chargement des commandes.
+        self.player = None
         self.rooms = {}  # Dictionnaire pour stocker les pièces
-        self.player = Player("entrée")  # Position initiale
         self.commands = self.initialiser_commandes()  # Commandes disponibles
+
+    def initialiser_jeu(self):
+        nom = input("Entrez votre nom: ").strip()
+        self.player = Player(nom)
+        print(f"\nBienvenue {self.player.name} dans ce jeu d'aventure !")
+        print("Entrez 'help' si vous avez besoin d'aide.\n")
+        self.regarder_autour()
 
     def initialiser_commandes(self):
         # Initialise les commandes disponibles dans le jeu.
@@ -31,6 +36,14 @@ class Game:
             "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
             "retour": Command("retour", "Revenir à la position précédente.", self.revenir_en_arriere, 0),
         }
+
+    def afficher_aide(self):
+        print("\nCommandes disponibles :")
+        print("  nord, sud, est, ouest - Se déplacer")
+        print("  regarder - Regarder autour de vous")
+        print("  historique - Afficher l'historique de vos déplacements")
+        print("  quit - Quitter le jeu")
+        print("  help - Afficher ce message d'aide\n")
 
     def creer_piece(self):
         # Permet au joueur de créer une nouvelle pièce.
@@ -110,16 +123,30 @@ class Game:
 
             
     def jouer(self):
-        # Démarre la boucle principale du jeu.
-        print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
-
+        self.initialiser_jeu()
         while True:
-            commande = input(">>> ").strip().lower()
-            if commande in self.commands:
-                self.commands[commande].action()
+            commande = input("> ").strip().lower()
+            if commande == "quit":
+                print("Merci d'avoir joué ! À bientôt.")
+                break
+            elif commande == "help":
+                self.afficher_aide()
+            elif commande in ["nord", "sud", "est", "ouest"]:
+                self.deplacer(commande)
+            elif commande == "regarder":
+                self.regarder_autour()
+            elif commande == "historique":
+                self.afficher_historique()
             else:
-                Command.afficher_message_erreur()
+                print("Commande inconnue. Tapez 'help' pour voir les commandes disponibles.")
 
+    def regarder_autour(self):
+        lieu = self.player.position
+        description = Room.descriptions.get(lieu, "Lieu inconnu.")
+        sorties = Room.obtenir_sorties(lieu)
+        print(f"\n{description}\n")
+        print(f"Sorties: {sorties}")
+        
     def afficher_historique(self):
         if self.player.historique:
             print("Historique des déplacements :")
