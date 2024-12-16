@@ -16,15 +16,11 @@ class Command:
         # Retourne une représentation lisible de la commande
         return f"{self.command_word}: {self.help_string}"
 
-    def afficher_message_erreur():
-        # Méthode statique pour afficher un message d'erreur générique
-        print("Commande non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.")
-
     def executer(self, *params):
          # Exécute l'action associée à la commande avec les paramètres donnés.
          # Vérifie que le bon nombre de paramètres est fourni avant de l'exécuter.
         if len(params) != self.number_of_parameters:
             print("Nombre incorrect de paramètres pour cette commande.")
         else:
-            return self.action(*params)
+            self.action(*params)
 
