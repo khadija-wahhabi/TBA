@@ -13,12 +13,12 @@ class Game:
     def __init__(self):
         # Initialise le jeu :
         self.player = None
-        self.rooms = {}  # Dictionnaire pour stocker les pièces
+        self.rooms = Room.zones  # Dictionnaire pour stocker les pièces
         self.commands = self.initialiser_commandes()  # Commandes disponibles
 
     def initialiser_jeu(self):
         nom = input("Entrez votre nom: ").strip()
-        self.player = Player(nom)
+        self.player = Player("chambre", nom)
         print(f"\nBienvenue {self.player.name} dans ce jeu d'aventure !")
         print("Entrez 'help' si vous avez besoin d'aide.\n")
         self.regarder_autour()
@@ -36,14 +36,6 @@ class Game:
             "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
             "retour": Command("retour", "Revenir à la position précédente.", self.revenir_en_arriere, 0),
         }
-
-    def afficher_aide(self):
-        print("\nCommandes disponibles :")
-        print("  nord, sud, est, ouest - Se déplacer")
-        print("  regarder - Regarder autour de vous")
-        print("  historique - Afficher l'historique de vos déplacements")
-        print("  quit - Quitter le jeu")
-        print("  help - Afficher ce message d'aide\n")
 
     def creer_piece(self):
         # Permet au joueur de créer une nouvelle pièce.
@@ -77,10 +69,10 @@ class Game:
         print(f"La pièce '{name}' a été ajoutée avec succès.")
     
     def afficher_aide(self):
-        # Affiche les commandes disponibles pour le joueur.
-        print("Commandes disponibles :")
+        print("\nCommandes disponibles :")
         for cmd in self.commands.values():
             print(f"- {cmd}")
+        print()
 
     def quitter(self):
         # Quitte le jeu.
