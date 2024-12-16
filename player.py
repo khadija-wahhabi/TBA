@@ -8,6 +8,15 @@ class Player:
     def __init__(self, start_position):
         self.position = start_position  # Position actuelle
         self.inventory = []  # Inventaire du joueur
+        self.name = name  # Nom du joueur
+
+    def set_name(self, name):
+        """Définir le nom du joueur."""
+        self.name = name
+
+    def get_name(self):
+        """Obtenir le nom du joueur."""
+        return self.name
 
     def changer_position(self, nouvelle_position):
         # Change la position actuelle du joueur.
