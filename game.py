@@ -105,9 +105,9 @@ class Game:
             print("Aucun historique de déplacement disponible.")
 
     def jouer(self):
-        print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
+        print("Bienvenue dans le jeu ! Tapez 'HELP' pour voir les commandes disponibles.")
         while True:
-            commande = input(">>> ").strip().lower()
+            commande = input(">>> ").strip().upper()  # Convertir en majuscules ici
             if commande in self.commands:
                 self.commands[commande].action()
             else:
