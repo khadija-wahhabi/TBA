@@ -37,9 +37,6 @@ class Room:
     }
 
     def __init__(self, name, description):
-        # Initialisation d'une pièce.
-        # - name : Nom de la pièce.
-        # - description : Description de la pièce.
         self.name = name
         self.description = description
         self.exits = {}  # Sorties supplémentaires
@@ -50,13 +47,10 @@ class Room:
 
     def ajouter_sortie(self, direction, room):
         # Ajoute une sortie depuis cette pièce.
-        # - direction : La direction de la sortie.
-        # - room : La pièce cible.
         self.exits[direction] = room
 
     def obtenir_sortie(self, direction):
         # Renvoie la destination correspondant à une direction donnée.
-        # - direction : La direction demandée.
         return self.exits.get(direction)
 
     def afficher_description(self):
@@ -76,15 +70,3 @@ class Room:
             print("Vous remarquez quelqu'un dans la pièce :")
             for nom_pnj in self.pnj.keys():
                 print(f"- {nom_pnj}")
-
-    def ajouter_objet(self, objet, description):
-        # Ajoute un objet à l'inventaire de la pièce.
-        # - objet : Nom de l'objet.
-        # - description : Description de l'objet.
-        self.inventory[objet] = description
-
-    def retirer_objet(self, objet):
-        # Retire un objet de l'inventaire de la pièce.
-        # - objet : Nom de l'objet à retirer.
-        if objet in self.inventory:
-            del self.inventory[objet]
