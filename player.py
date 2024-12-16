@@ -8,7 +8,7 @@ class Player:
     def __init__(self, start_position):
         # Initialisation du joueur.
         self.name = name
-        self.position = "chambre"  # Position initialle
+        self.position = start_position  # Position initialle
         self.inventory = []  # Inventaire du joueur
         self.historique = [start_position]  # Historique des déplacements
         
