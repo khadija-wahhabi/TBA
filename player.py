@@ -5,7 +5,7 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 
 class Player:
-    def __init__(self, start_position):
+    def __init__(self, start_position,name):
         # Initialisation du joueur.
         self.name = name
         self.position = start_position  # Position initialle
