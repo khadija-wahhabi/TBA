@@ -5,17 +5,13 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 
 class Player:
-    def __init__(self, start_position,name):
-        # Initialisation du joueur.
-        self.name = name
-        self.position = start_position  # Position initialle
+    def __init__(self, start_position):
+        self.position = start_position  # Position actuelle
         self.inventory = []  # Inventaire du joueur
-        self.historique = [start_position]  # Historique des déplacements
-        
+
     def changer_position(self, nouvelle_position):
         # Change la position actuelle du joueur.
         self.position = nouvelle_position
-        self.historique.append(nouvelle_position)  # Enregistre la nouvelle position dans l'historique
 
     def ajouter_objet(self, objet):
         # Ajoute un objet à l'inventaire du joueur.
@@ -27,4 +23,3 @@ class Player:
             print("Votre inventaire : " + ", ".join(self.inventory))
         else:
             print("Votre inventaire est vide.")
-
