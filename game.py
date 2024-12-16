@@ -135,7 +135,7 @@ class Game:
     def regarder_autour(self):
         lieu = self.player.position
         description = Room.descriptions.get(lieu, "Lieu inconnu.")
-        sorties = Room.obtenir_sorties(lieu)
+        sorties = Room.obtenir_sortie(lieu)
         print(f"\n{description}\n")
         print(f"Sorties: {sorties}")
         
