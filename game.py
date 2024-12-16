@@ -11,7 +11,7 @@ from command import Command
 class Game:
     
     def __init__(self):
-        self.player = Player("entrée")  # Position initiale
+        self.player = Player("chambre")  # Position initiale
         self.commands = self.initialiser_commandes()  # Commandes disponibles
         self.history = []  # Historique des déplacements
 
