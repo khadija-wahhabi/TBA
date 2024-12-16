@@ -37,6 +37,15 @@ class Game:
         print("Merci d'avoir joué ! À bientôt.")
         exit()
 
+    def demander_nom_utilisateur(self):
+        """Demander le nom de l'utilisateur."""
+        nom = input("Entrez votre nom : ").strip()
+        if not nom:
+            print("Nom invalide. Par défaut, vous serez appelé 'Aventurier'.")
+            nom = "Aventurier"
+        self.player.set_name(nom)
+        print(f"Bienvenue, {self.player.get_name()} ! Préparez-vous à explorer.")
+
     def deplacer(self, direction=None):
         if direction is None:  # Si aucune direction n'est spécifiée, demander à l'utilisateur
             direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
