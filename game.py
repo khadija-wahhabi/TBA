@@ -17,17 +17,17 @@ class Game:
 
     def initialiser_commandes(self):
         return {
-            "nord": Command("nord", "Aller vers le nord.", lambda: self.deplacer("nord"), 0),
-            "est": Command("est", "Aller vers l'est.", lambda: self.deplacer("est"), 0),
-            "sud": Command("sud", "Aller vers le sud.", lambda: self.deplacer("sud"), 0),
-            "ouest": Command("ouest", "Aller vers l'ouest.", lambda: self.deplacer("ouest"), 0),
-            "U": Command("U", "Aller vers le haut (grenier).", lambda: self.deplacer("U"), 0),  
-            "D": Command("D", "Aller vers le bas (cave).", lambda: self.deplacer("D"), 0),  
-            "help": Command("help", "Afficher l'aide.", self.afficher_aide, 0),
-            "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
-            "back": Command("back", "Revenir à la dernière position.", self.revenir, 0),
-            "journal": Command("journal", "Voir le journal et résoudre des énigmes.", self.voir_journal, 0),
-            "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
+        "nord": Command("nord", "Aller vers le nord.", lambda: self.deplacer("nord"), 0),
+        "est": Command("est", "Aller vers l'est.", lambda: self.deplacer("est"), 0),
+        "sud": Command("sud", "Aller vers le sud.", lambda: self.deplacer("sud"), 0),
+        "ouest": Command("ouest", "Aller vers l'ouest.", lambda: self.deplacer("ouest"), 0),
+        "u": Command("u", "Aller vers le haut (grenier).", lambda: self.deplacer("u"), 0),  
+        "d": Command("d", "Aller vers le bas (cave).", lambda: self.deplacer("d"), 0),  
+        "help": Command("help", "Afficher l'aide.", self.afficher_aide, 0),
+        "quitter": Command("quitter", "Quitter le jeu.", self.quitter, 0),
+        "back": Command("back", "Revenir à la dernière position.", self.revenir, 0),
+        "journal": Command("journal", "Voir le journal et résoudre des énigmes.", self.voir_journal, 0),
+        "historique": Command("historique", "Afficher l'historique des déplacements.", self.afficher_historique, 0),
         }
 
     def afficher_aide(self):
@@ -56,9 +56,9 @@ class Game:
         directions_possibles = Room.zones.get(lieu_actuel, {})
 
         # Ajout de la gestion pour "U" (vers le grenier) et "D" (vers la cave)
-        if direction == "U":  # Si la commande est "U", on va vers le grenier
+        if direction == "u":  # Si la commande est "U", on va vers le grenier
             prochaine_zone = "grenier"
-        elif direction == "D":  # Si la commande est "D", on va vers la cave
+        elif direction == "d":  # Si la commande est "D", on va vers la cave
             prochaine_zone = "cave"
         elif direction in directions_possibles:  # Pour les directions normales
             prochaine_zone = directions_possibles.get(direction)
@@ -77,7 +77,7 @@ class Game:
                  print(f"Le sens vers {prochaine_zone} est bloqué (sens unique).")
                  return
 
-            # Changer la position du joueur
+        # Changer la position du joueur
         self.player.changer_position(prochaine_zone)
         self.history.append(lieu_actuel)
         print(f"Vous êtes maintenant dans {self.player.position}.")
@@ -105,7 +105,7 @@ class Game:
             print("Aucun historique de déplacement disponible.")
 
     def jouer(self):
-        print("Bienvenue dans le jeu ! Tapez 'HELP' pour voir les commandes disponibles.")
+        print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
         while True:
             commande = input(">>> ").strip().upper()  # Convertir en majuscules ici
             if commande in self.commands:
