@@ -31,8 +31,8 @@ class Room:
 
     # Sens unique
     sens_unique = {
-        "jardin": {"sud": False},  # Ne peut pas revenir au jardin
-        "grenier": {"ouest": False}  # Ne peut pas aller au grenier depuis la chambre
+        "jardin": {"sud": "cuisine"},  # Ne peut pas revenir au jardin
+        "chambre": {"ouest": "grenier"}  # Ne peut pas aller au grenier depuis la chambre
     }
 
     def __init__(self, name, description):
