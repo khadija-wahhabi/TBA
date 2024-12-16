@@ -8,15 +8,16 @@ class Room:
 
     # Dictionnaire des zones et leurs sorties
     zones = {
-        "entrée": {"nord": "salon", "est": None, "sud": None, "ouest": None},
-        "salon": {"nord": "chambre", "est": "cuisine", "sud": "entrée", "ouest": None},
-        "cuisine": {"nord": None, "est": "jardin", "sud": None, "ouest": "salon"},
-        "chambre": {"nord": "bureau", "est": None, "sud": "salon", "ouest": "grenier"},
-        "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None},
-        "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine"},
-        "grenier": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
-        "cave": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
+        "entrée": {"nord": "salon", "est": None, "sud": None, "ouest": None, "U": "grenier", "D": "cave"},  
+        "salon": {"nord": "chambre", "est": "cuisine", "sud": "entrée", "ouest": None, "U": None, "D": "cave"}, 
+        "cuisine": {"nord": None, "est": "jardin", "sud": None, "ouest": "salon", "U": None, "D": None},
+        "chambre": {"nord": "bureau", "est": None, "sud": "salon", "ouest": None, "U": "grenier", "D": None},  
+        "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None, "U": None, "D": None},
+        "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine", "U": None, "D": None},
+        "grenier": {"nord": None, "est": None, "sud": None, "ouest": None, "U": None, "D": "chambre"},  
+        "cave": {"nord": None, "est": none, "sud": None, "ouest": None, "U": "salon", "D": None},  
     }
+    
     descriptions = {
         "entrée": " l ",
         "salon": " l",
@@ -33,8 +34,8 @@ class Room:
 
     # Sens unique
     sens_unique = {
-        "jardin": {"sud": "cuisine"},  # Ne peut pas revenir au jardin
-        "chambre": {"ouest": "grenier"}  # Ne peut pas aller au grenier depuis la chambre
+        "entrée": {"D": "cave"},  # Ne peut pas revenir au jardin
+        "chambre": {"U": "grenier"}  # Ne peut pas aller au grenier depuis la chambre
     }
 
     def __init__(self, name, description):
