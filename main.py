@@ -8,7 +8,6 @@ from game import Game
 
 def main():
     game = Game()
-    game.demander_nom_utilisateur()
     game.jouer()
 
 # Démarrage du jeu
