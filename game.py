@@ -47,7 +47,7 @@ class Game:
 
     def deplacer(self, direction=None):
         if direction is None:  # Si aucune direction n'est spécifiée, demander à l'utilisateur
-            direction = input("Entrez une direction (nord, est, sud, ouest) : ").strip().lower()
+            direction = input("Entrez une direction (nord, est, sud, ouest, U, D) : ").strip().lower()
 
         lieu_actuel = self.player.position
         directions_possibles = Room.zones.get(lieu_actuel, {})
