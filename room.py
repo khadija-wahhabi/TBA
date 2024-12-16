@@ -12,18 +12,20 @@ class Room:
         "salon": {"nord": "chambre", "est": "cuisine", "sud": "entrée", "ouest": None},
         "cuisine": {"nord": None, "est": "jardin", "sud": None, "ouest": "salon"},
         "chambre": {"nord": "bureau", "est": None, "sud": "salon", "ouest": "grenier"},
-        "grenier": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
-        "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine"},
         "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None},
+        "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine"},
+        "grenier": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
+        "cave": {"nord": None, "est": "chambre", "sud": None, "ouest": None},
     }
     descriptions = {
         "entrée": " l ",
         "salon": " l",
         "cuisine":  " l",
         "chambre": "Vous êtes dans la chambre où vous vous êtes réveillé. Tout semble familier, mais un vide persiste en vous.",
-        "grenier": "Un long couloir sombre avec des cadres de photos suspendus aux murs.",
+        "bureau": "Une cuisine déserte. Une odeur de nostalgie flotte dans l'air.",
         "jardin": "Vous êtes dans une bibliothèque ancienne. Les étagères sont remplies de livres poussiéreux et un journal attire votre attention.",
-        "bureau": "Une cuisine déserte. Une odeur de nostalgie flotte dans l'air."
+        "grenier": "Un long couloir sombre avec des cadres de photos suspendus aux murs.",
+        "cave": " Description",
     }
 
     # Zones interdites
