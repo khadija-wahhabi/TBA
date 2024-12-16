@@ -11,9 +11,9 @@ from command import Command
 class Game:
     
     def __init__(self):
-        self.player = Player("chambre")  # Position initiale
-        self.commands = self.initialiser_commandes()  # Commandes disponibles
+        self.commands = self.initialiser_commandes()  # Position initiale
         self.history = []  # Historique des déplacements
+        self.player = self.demander_nom_utilisateur()  # Commandes disponibles
 
     def initialiser_commandes(self):
         return {
@@ -38,13 +38,12 @@ class Game:
         exit()
 
     def demander_nom_utilisateur(self):
-        """Demander le nom de l'utilisateur."""
         nom = input("Entrez votre nom : ").strip()
         if not nom:
             print("Nom invalide. Par défaut, vous serez appelé 'Aventurier'.")
             nom = "Aventurier"
-        self.player.set_name(nom)
-        print(f"Bienvenue, {self.player.get_name()} ! Préparez-vous à explorer.")
+        print(f"Bienvenue, {nom} ! Préparez-vous à explorer.")
+        return Player(start_position="chambre", name=nom)  # Retourne un joueur avec le nom
 
     def deplacer(self, direction=None):
         if direction is None:  # Si aucune direction n'est spécifiée, demander à l'utilisateur
