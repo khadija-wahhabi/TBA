@@ -5,7 +5,7 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 
 class Player:
-    def __init__(self, start_position):
+    def __init__(self, start_position, name):
         self.position = start_position  # Position actuelle
         self.inventory = []  # Inventaire du joueur
         self.name = name  # Nom du joueur
