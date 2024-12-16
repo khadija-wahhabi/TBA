@@ -58,7 +58,7 @@ class Game:
         # Ajout de la gestion pour "U" (vers le grenier) et "D" (vers la cave)
         if direction == "U":  # Si la commande est "U", on va vers le grenier
             prochaine_zone = "grenier"
-         elif direction == "D":  # Si la commande est "D", on va vers la cave
+        elif direction == "D":  # Si la commande est "D", on va vers la cave
             prochaine_zone = "cave"
         elif direction in directions_possibles:  # Pour les directions normales
             prochaine_zone = directions_possibles.get(direction)
