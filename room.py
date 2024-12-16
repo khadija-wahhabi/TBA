@@ -27,7 +27,7 @@ class Room:
     }
 
     # Zones interdites
-    zones_interdites = ["chambre", "grenier", "jardin"]
+    zones_interdites = ["grenier", "jardin"]
 
     # Sens unique
     sens_unique = {
