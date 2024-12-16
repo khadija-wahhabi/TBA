@@ -54,8 +54,13 @@ class Game:
         lieu_actuel = self.player.position
         directions_possibles = Room.zones.get(lieu_actuel, {})
 
-        if direction in directions_possibles:
-            prochaine_zone = directions_possibles[direction]
+        if direction in directions_possibles or direction in ["U", "D"]:  # Ajout de "U" et "D"
+            if direction == "U":
+                prochaine_zone = "grenier"  # Direction vers le grenier
+            elif direction == "D":
+                prochaine_zone = "cave"  # Direction vers la cave
+            else:
+                prochaine_zone = directions_possibles.get(direction)
 
             # Vérification des zones interdites
             if prochaine_zone in Room.zones_interdites:
