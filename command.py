@@ -5,7 +5,6 @@ Authors = WAHHABI Khadija & BOUASSRIA Lamyae
 """
 
 class Command:
-
     def __init__(self, command_word, help_string, action, number_of_parameters):
         self.command_word = command_word  # Mot-clé de la commande
         self.help_string = help_string  # Texte d'aide pour expliquer la commande
@@ -13,14 +12,14 @@ class Command:
         self.number_of_parameters = number_of_parameters  # Nombre de paramètres requis
 
     def __str__(self):
-        # Retourne une représentation lisible de la commande
         return f"{self.command_word}: {self.help_string}"
 
+    @staticmethod
+    def afficher_message_erreur():
+        print("Commande non reconnue. Entrez 'help' pour voir la liste des commandes disponibles.")
+
     def executer(self, *params):
-         # Exécute l'action associée à la commande avec les paramètres donnés.
-         # Vérifie que le bon nombre de paramètres est fourni avant de l'exécuter.
         if len(params) != self.number_of_parameters:
             print("Nombre incorrect de paramètres pour cette commande.")
         else:
-            self.action(*params)
-
+            return self.action(*params)
