@@ -15,7 +15,7 @@ class Room:
         "bureau": {"nord": None, "est": None, "sud": "chambre", "ouest": None, "U": None, "D": None},
         "jardin": {"nord": None, "est": None, "sud": None, "ouest": "cuisine", "U": None, "D": None},
         "grenier": {"nord": None, "est": None, "sud": None, "ouest": None, "U": None, "D": "chambre"},  
-        "cave": {"nord": None, "est": none, "sud": None, "ouest": None, "U": "salon", "D": None},  
+        "cave": {"nord": None, "est": None, "sud": None, "ouest": None, "U": "salon", "D": None},  
     }
     
     descriptions = {
