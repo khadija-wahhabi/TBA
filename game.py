@@ -107,9 +107,10 @@ class Game:
     def jouer(self):
         print("Bienvenue dans le jeu ! Tapez 'help' pour voir les commandes disponibles.")
         while True:
-            commande = input(">>> ").strip().upper()  # Convertir en majuscules ici
+            commande = input(">>> ").strip().lower()  # Convertir en minuscules
             if commande in self.commands:
                 self.commands[commande].action()
             else:
                 Command.afficher_message_erreur()
+
 
