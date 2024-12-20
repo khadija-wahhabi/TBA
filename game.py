@@ -48,39 +48,38 @@ class Game:
         return Player(start_position="chambre", name=nom)  # Retourne un joueur avec le nom
 
     def deplacer(self, direction=None):
-        
         if direction is None:  # Si aucune direction n'est spécifiée, demander à l'utilisateur
-            direction = input("Entrez une direction (nord, est, sud, ouest, U, D) : ").strip().lower()
+            direction = input("Entrez une direction (nord, est, sud, ouest, u, d) : ").strip().lower()
 
         lieu_actuel = self.player.position
         directions_possibles = Room.zones.get(lieu_actuel, {})
 
-        # Ajout de la gestion pour "U" (vers le grenier) et "D" (vers la cave)
-        if direction == "u":  # Si la commande est "U", on va vers le grenier
+        if direction == "u":  # Gestion du déplacement vers le grenier
             prochaine_zone = "grenier"
-        elif direction == "d":  # Si la commande est "D", on va vers la cave
+        elif direction == "d":  # Gestion du déplacement vers la cave
             prochaine_zone = "cave"
-        elif direction in directions_possibles:  # Pour les directions normales
-            prochaine_zone = directions_possibles.get(direction)
         else:
+            prochaine_zone = directions_possibles.get(direction)
+
+        if not prochaine_zone:  # Vérification si la prochaine zone est None ou invalide
             print("Cette direction est inconnue ou inaccessible depuis cet endroit.")
             return
 
-            # Vérification des zones interdites
+    # Vérification des sens uniques
+        if lieu_actuel in Room.sens_unique and direction in Room.sens_unique[lieu_actuel]:
+            print(f"Vous ne pouvez pas aller vers {direction} depuis {lieu_actuel}, c'est un sens unique.")
+            return
+
+    # Vérification des zones interdites
         if prochaine_zone in Room.zones_interdites:
             print(f"Cette zone ({prochaine_zone}) est interdite d'accès.")
             return
 
-            # Vérification du sens unique
-        if lieu_actuel in Room.sens_unique:
-             if direction in Room.sens_unique[lieu_actuel]:
-                 print(f"Le sens vers {prochaine_zone} est bloqué (sens unique).")
-                 return
-
-        # Changer la position du joueur
+    # Changer la position du joueur
         self.player.changer_position(prochaine_zone)
         self.history.append(lieu_actuel)
         print(f"Vous êtes maintenant dans {self.player.position}.")
+
         
     def revenir(self):
         if self.history:
